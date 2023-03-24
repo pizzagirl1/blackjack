@@ -22,7 +22,6 @@ def deal_hand(my_deck):
   hand = []
   hand.append(draw_card(my_deck))
   hand.append(draw_card(my_deck))
-  print(f"{hand=}")
   return hand
 
 def print_hand(hand):
@@ -36,16 +35,27 @@ def print_hand(hand):
   print(print_row)
   print(horizontal_line)
 
-def hit_player(player, hand):
-  pass
+def print_dealer(hand):
+    horizontal_line = " ---" * len(hand)
+    print(horizontal_line)
+    print_row = "|   | "
+    for card in hand[1:]:
+        cardname = str(card)
+        print_row += (cardname)
+        print_row += " | "
+    print(print_row)
+    print(horizontal_line)
+
+def hit_player(deck, hand):
+  hand.append(draw_card(deck))
 
 def hit_dealer(dealer, hand):
   pass
 
 def score_hand(hand):
     score = 0
-    if len(hand) > 5:
-        return "Invalid"
+    # if len(hand) > 5:
+    #     return "Invalid"
 
     num_aces = 0
     
@@ -57,8 +67,8 @@ def score_hand(hand):
         else:
             score += card
 
-        if score > 21:
-            return "Bust"
+        # if score > 21:
+        #     return 
     
     # at most 1 ace can be 11, the rest must be 1
     if num_aces > 0:
@@ -68,10 +78,9 @@ def score_hand(hand):
         else:
             score = temp_score
 
-    if score > 21:
-        return "Bust"  
+    # if score > 21:
+    #     return   
 
-    print(f"{score=}")
     return score
 
 def declare_winner(hands):
@@ -79,16 +88,3 @@ def declare_winner(hands):
 
 def pay_out(bet, winner):
   pass
-
-def game(): 
-  game_board = (build_deck())
-  player_hand = deal_hand(game_board)
-  player_score = score_hand(player_hand)
-  print_hand(player_hand)
-  print()
-
-game()
-game()
-game()
-game()
-game()
