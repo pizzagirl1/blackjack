@@ -26,6 +26,10 @@ def game():
             print(f"{player_score=}")
         else:
             break
+
+    if player_score > 21:
+        print("BUST. You Lose.")
+        quit()
     
     while dealer_score < 17:
         hit_player(game_board, dealer)
